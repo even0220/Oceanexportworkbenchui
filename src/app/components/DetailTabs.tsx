@@ -1,6 +1,6 @@
-interface TabBarProps {
+interface DetailTabsProps {
   activeTab: string;
-  onTabChange: (tab: string) => void;
+  onTabChange: (t: string) => void;
 }
 
 const tabs = [
@@ -10,23 +10,23 @@ const tabs = [
   { key: "billing", label: "费用结算" },
 ];
 
-export function TabBar({ activeTab, onTabChange }: TabBarProps) {
+export function DetailTabs({ activeTab, onTabChange }: DetailTabsProps) {
   return (
-    <div className="bg-white border-b border-slate-200 px-6">
-      <div className="flex gap-1">
-        {tabs.map((tab) => (
+    <div className="sticky top-[73px] z-20 bg-white border-b border-slate-200 px-6 lg:px-10">
+      <div className="max-w-[1400px] mx-auto flex gap-0.5">
+        {tabs.map((t) => (
           <button
-            key={tab.key}
-            onClick={() => onTabChange(tab.key)}
+            key={t.key}
+            onClick={() => onTabChange(t.key)}
             className={`relative px-5 py-3 transition-colors ${
-              activeTab === tab.key
+              activeTab === t.key
                 ? "text-blue-600"
                 : "text-slate-500 hover:text-slate-700"
             }`}
-            style={{ fontSize: '0.9rem', fontWeight: activeTab === tab.key ? 500 : 400 }}
+            style={{ fontSize: "0.88rem", fontWeight: activeTab === t.key ? 500 : 400 }}
           >
-            {tab.label}
-            {activeTab === tab.key && (
+            {t.label}
+            {activeTab === t.key && (
               <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-600 rounded-full" />
             )}
           </button>
